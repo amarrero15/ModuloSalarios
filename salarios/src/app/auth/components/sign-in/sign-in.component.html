@@ -1,0 +1,38 @@
+<div class="sign-in-container">
+    <div class="cover text-center">
+        <img class="logo" src="assets/svg/logos/logo.png" alt="">
+    </div>
+    <div>
+        <div class="mb-3 email">
+            <label for="exampleFormControlInput1" class="form-label">Usuario</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Introduzca su email" (change)="validarEmail()" [(ngModel)]="authData.email">
+            <div *ngIf="emailValid"style="margin-left: 0rem;" >
+                <label [style.color]="emailColor" for="">
+                    Por favor ingrese un correo electrónico valido.
+                </label>
+                
+            </div>
+        </div>
+        <div class="mb-3 code">
+            <label for="exampleFormControlInput1" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="*****" (change)="validatePasswordLength()" (change)="validatePasswordUpper()" (change)="validateNumberPassword()" [(ngModel)]="authData.password">
+            <div class="mb-3 form-margin" style="margin-left: 0rem;">
+                <label [style.color]="lengthColor" class="errorMessage">Debe tener al menos 8 caracteres</label>
+              </div>
+    
+              <div class="mb-3 form-margin" style="margin-left: 0rem;">
+                  <label [style.color]="upperColor" class="errorMessage">Debe contener al menos una letra en mayúscula</label>
+              </div>
+    
+              <div class="mb-3 form-margin" style="margin-left: 0rem;">
+                  <label [style.color]="numberColor" class="errorMessage">Debe contener al menos un número</label>
+              </div>
+        </div>
+        <div class="row text-center">
+            <label for="" (click)="recuperarPassword()">¿Olvidó su contraseña?</label>
+        </div>
+        <div class="mb-3 text-center">
+            <button class="primaryButton" (click)="signIn()">Continuar</button>
+        </div>
+    </div>
+</div>
